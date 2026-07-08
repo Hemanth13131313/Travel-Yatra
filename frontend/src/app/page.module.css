@@ -1,0 +1,635 @@
+.main {
+  width: 100%;
+}
+
+/* --- Hero Section --- */
+.hero {
+  position: relative;
+  height: calc(100vh - var(--navbar-height));
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  text-align: center;
+}
+
+.heroBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.heroImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.05);
+  animation: slowZoom 20s ease-out forwards;
+}
+
+.heroOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(30,58,47,0.3) 0%, rgba(30,58,47,0.7) 100%);
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 0 var(--space-4);
+}
+
+.heroTitle {
+  font-size: var(--text-6xl);
+  color: var(--color-bg);
+  margin-bottom: var(--space-6);
+  font-weight: 800;
+  line-height: 1.1;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.heroSubtitle {
+  font-size: var(--text-xl);
+  color: var(--color-bg-dark);
+  margin-bottom: var(--space-8);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.heroActions {
+  display: flex;
+  gap: var(--space-4);
+  justify-content: center;
+}
+
+/* Scroll Indicator */
+.scrollIndicator {
+  position: absolute;
+  bottom: var(--space-8);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-bg);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  opacity: 0.8;
+}
+
+.mouse {
+  width: 24px;
+  height: 36px;
+  border: 2px solid var(--color-bg);
+  border-radius: 12px;
+  position: relative;
+}
+
+.mouse::before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  background: var(--color-bg);
+  border-radius: 50%;
+  animation: scrollDown 2s infinite;
+}
+
+/* --- Buttons --- */
+.btnPrimary {
+  background: var(--color-accent);
+  color: var(--color-bg);
+  padding: var(--space-3) var(--space-8);
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  transition: all var(--transition-fast);
+}
+
+.btnPrimary:hover {
+  background: var(--color-accent-dark);
+  transform: translateY(-2px);
+}
+
+.btnSecondary {
+  display: inline-block;
+  background: transparent;
+  color: var(--color-primary);
+  padding: var(--space-3) var(--space-8);
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  border: 2px solid var(--color-primary);
+  transition: all var(--transition-fast);
+}
+
+.btnSecondary:hover {
+  background: var(--color-primary);
+  color: var(--color-bg);
+}
+
+.btnOutline {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(4px);
+  color: var(--color-bg);
+  padding: var(--space-3) var(--space-8);
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  border: 1px solid rgba(255,255,255,0.3);
+  transition: all var(--transition-fast);
+}
+
+.btnOutline:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.btnText {
+  color: var(--color-primary);
+  font-weight: 600;
+  font-size: var(--text-sm);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  transition: text-decoration-color var(--transition-fast);
+}
+
+.btnText:hover {
+  text-decoration-color: var(--color-accent);
+}
+
+.centerAction {
+  margin-top: var(--space-12);
+  text-align: center;
+}
+
+/* --- Featured Experiences (Destinations) --- */
+.destGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: var(--space-8);
+  margin-top: var(--space-10);
+}
+
+.destCard {
+  display: block;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  position: relative;
+  height: 450px;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.destCard:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-xl);
+}
+
+.destImageWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.destImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+.destCard:hover .destImage {
+  transform: scale(1.1);
+}
+
+.destOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60%;
+  background: linear-gradient(to top, rgba(30,58,47,0.9) 0%, transparent 100%);
+}
+
+.destContent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: var(--space-6);
+  color: var(--color-bg);
+  z-index: 2;
+}
+
+.destCountry {
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-accent-light);
+  margin-bottom: var(--space-1);
+  display: block;
+}
+
+.destName {
+  font-size: var(--text-2xl);
+  color: var(--color-bg);
+  margin-bottom: var(--space-2);
+}
+
+.destTagline {
+  font-size: var(--text-sm);
+  color: rgba(255,255,255,0.8);
+  line-height: 1.5;
+}
+
+/* --- Explore by Mood --- */
+.moodSection {
+  background-color: var(--color-bg-alt);
+}
+
+.moodGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--space-6);
+  margin-top: var(--space-10);
+}
+
+.moodCard {
+  background: var(--color-bg);
+  padding: var(--space-6) var(--space-4);
+  border-radius: var(--radius-md);
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.moodCard:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-md);
+}
+
+.moodIconWrapper {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--space-4);
+}
+
+.moodIcon {
+  font-size: 24px;
+}
+
+.moodName {
+  font-size: var(--text-base);
+  color: var(--color-text);
+  font-family: var(--font-body);
+}
+
+/* --- Popular Expeditions --- */
+.pkgGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-8);
+  margin-top: var(--space-10);
+}
+
+.pkgCard {
+  background: var(--color-bg);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pkgCard:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.pkgImageWrapper {
+  position: relative;
+  height: 220px;
+}
+
+.pkgImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pkgBadge {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  background: rgba(30,58,47,0.8);
+  color: var(--color-bg);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  backdrop-filter: blur(4px);
+}
+
+.pkgContent {
+  padding: var(--space-6);
+}
+
+.pkgTitle {
+  font-size: var(--text-xl);
+  margin-bottom: var(--space-2);
+}
+
+.pkgMeta {
+  display: flex;
+  gap: var(--space-4);
+  font-size: var(--text-sm);
+  color: var(--color-text-light);
+  margin-bottom: var(--space-3);
+}
+
+.pkgDesc {
+  font-size: var(--text-sm);
+  margin-bottom: var(--space-4);
+}
+
+.pkgFooter {
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+}
+
+/* --- Map Section --- */
+.mapSection {
+  position: relative;
+  background-image: url('https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=2000&q=80');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  padding: var(--space-32) 0;
+  text-align: center;
+  color: var(--color-bg);
+}
+
+.mapOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(30,58,47,0.8);
+}
+
+.mapContent {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.mapTitle {
+  color: var(--color-bg);
+  margin-bottom: var(--space-4);
+}
+
+.mapDesc {
+  color: rgba(255,255,255,0.8);
+  margin-bottom: var(--space-8);
+  font-size: var(--text-lg);
+}
+
+/* --- AI Section (Terra Guide) --- */
+.aiSection {
+  background: var(--color-primary);
+  color: var(--color-bg);
+}
+
+.aiLayout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-16);
+  align-items: center;
+}
+
+.aiTitle {
+  color: var(--color-bg);
+  margin-bottom: var(--space-6);
+}
+
+.aiDesc {
+  color: rgba(255,255,255,0.8);
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-6);
+}
+
+.aiFeatures {
+  margin-bottom: var(--space-8);
+}
+
+.aiFeatures li {
+  margin-bottom: var(--space-3);
+  font-size: var(--text-base);
+  color: var(--color-bg);
+}
+
+.aiMockup {
+  background: var(--color-bg);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-2xl);
+  color: var(--color-text);
+}
+
+.mockHeader {
+  padding: var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+  text-align: center;
+  font-weight: 600;
+  background: var(--color-bg-alt);
+}
+
+.mockBody {
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.mockMessage {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.mockUserMessage {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.mockAvatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: var(--color-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.mockBubble {
+  background: var(--color-bg-alt);
+  padding: var(--space-3) var(--space-4);
+  border-radius: 0 var(--radius-md) var(--radius-md) var(--radius-md);
+  font-size: var(--text-sm);
+  max-width: 85%;
+}
+
+.mockUserBubble {
+  background: var(--color-primary);
+  color: var(--color-bg);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md) 0 var(--radius-md) var(--radius-md);
+  font-size: var(--text-sm);
+  max-width: 85%;
+}
+
+/* --- Traveler Stories --- */
+.storyGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-8);
+  margin-top: var(--space-10);
+}
+
+.storyCard {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s ease;
+  background: var(--color-bg);
+}
+
+.storyCard:hover {
+  transform: translateY(-8px);
+}
+
+.storyImageWrapper {
+  height: 240px;
+}
+
+.storyImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.storyContent {
+  padding: var(--space-6);
+}
+
+.storyMeta {
+  font-size: var(--text-xs);
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  display: block;
+  margin-bottom: var(--space-2);
+}
+
+.storyTitle {
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-3);
+  line-height: 1.4;
+}
+
+.storyExcerpt {
+  font-size: var(--text-sm);
+  color: var(--color-text-light);
+  margin-bottom: var(--space-4);
+}
+
+.storyAuthor {
+  font-size: var(--text-sm);
+  font-style: italic;
+  color: var(--color-text-lighter);
+}
+
+/* --- Hidden Gems Banner --- */
+.gemsBanner {
+  background: linear-gradient(rgba(30,58,47,0.8), rgba(30,58,47,0.8)), url('https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?auto=format&fit=crop&w=2000&q=80') center/cover;
+  padding: var(--space-24) var(--space-4);
+  text-align: center;
+  color: var(--color-bg);
+}
+
+.gemsContent h2 {
+  color: var(--color-bg);
+  margin-bottom: var(--space-4);
+}
+
+.gemsContent p {
+  color: rgba(255,255,255,0.9);
+  font-size: var(--text-xl);
+  margin-bottom: var(--space-8);
+}
+
+/* --- Animations --- */
+@keyframes slowZoom {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.1); }
+}
+
+@keyframes scrollDown {
+  0% { transform: translate(-50%, 0); opacity: 1; }
+  100% { transform: translate(-50%, 15px); opacity: 0; }
+}
+
+/* --- Responsive --- */
+@media (max-width: 992px) {
+  .aiLayout {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+}
+
+@media (max-width: 768px) {
+  .heroTitle {
+    font-size: var(--text-4xl);
+  }
+  
+  .heroActions {
+    flex-direction: column;
+  }
+  
+  .btnPrimary, .btnOutline {
+    width: 100%;
+  }
+  
+  .destCard {
+    height: 350px;
+  }
+}
